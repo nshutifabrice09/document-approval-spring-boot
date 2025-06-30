@@ -2,6 +2,8 @@ package com.workflow.document_approval_spring_boot.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Workflow {
     @Id
