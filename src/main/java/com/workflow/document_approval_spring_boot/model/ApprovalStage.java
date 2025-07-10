@@ -13,9 +13,11 @@ public class ApprovalStage {
     private int sequence; // order of stage in workflow
 
     @ManyToOne
+    @JoinColumn(name = "document_id")
     private Document document;
 
     @ManyToOne
+    @JoinColumn(name = "approver_id")
     private User approver;
 
     @Enumerated(EnumType.STRING)
