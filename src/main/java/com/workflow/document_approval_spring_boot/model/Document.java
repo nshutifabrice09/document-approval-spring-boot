@@ -1,10 +1,17 @@
 package com.workflow.document_approval_spring_boot.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
+@Data
+@Table(name = "documents")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Document {
     @Id
     @GeneratedValue
