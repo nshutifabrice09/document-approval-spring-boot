@@ -32,4 +32,60 @@ public class ApprovalStage {
 
     private String comments;
     private LocalDate reviewedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
+    }
+
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    public User getApprover() {
+        return approver;
+    }
+
+    public void setApprover(User approver) {
+        this.approver = approver;
+    }
+
+    public StageStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(StageStatus status) {
+        this.status = status;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public LocalDate getReviewedAt() {
+        return reviewedAt;
+    }
+
+    public void setReviewedAt(LocalDate reviewedAt) {
+        this.reviewedAt = reviewedAt;
+    }
 }
