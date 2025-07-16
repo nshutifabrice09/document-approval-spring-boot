@@ -20,12 +20,12 @@ public class ApprovalStageServiceImplementation implements ApprovalStageService{
 
     @Override
     public List<ApprovalStage> approvalStageList() {
-        return null;
+        return approvalStageRepository.findAll();
     }
 
     @Override
     public ApprovalStage getApprovalStageById(Long id) {
-        return null;
+        return approvalStageRepository.findApprovalStageById(id);
     }
 
     @Override
