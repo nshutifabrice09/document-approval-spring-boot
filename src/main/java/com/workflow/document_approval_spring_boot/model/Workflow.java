@@ -5,23 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Data
 @Table(name = "workflows")
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Workflow {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String description;
+    private boolean isActive;
+    private String triggerCondition;
+    private Long createdBy;
+    private LocalDate createdAt;
 
-    @OneToMany(mappedBy = "workflow", cascade = CascadeType.ALL)
-    private List<ApprovalStageTemplate> stages;
+    @OneToMany(mappedBy = "workflow")
+    private List<ApprovalStage> approvalStages;
 
     public Long getId() {
         return id;
@@ -47,11 +52,43 @@ public class Workflow {
         this.description = description;
     }
 
-    public List<ApprovalStageTemplate> getStages() {
-        return stages;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setStages(List<ApprovalStageTemplate> stages) {
-        this.stages = stages;
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public String getTriggerCondition() {
+        return triggerCondition;
+    }
+
+    public void setTriggerCondition(String triggerCondition) {
+        this.triggerCondition = triggerCondition;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<ApprovalStage> getApprovalStages() {
+        return approvalStages;
+    }
+
+    public void setApprovalStages(List<ApprovalStage> approvalStages) {
+        this.approvalStages = approvalStages;
     }
 }
