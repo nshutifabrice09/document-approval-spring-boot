@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WorkflowRepository extends JpaRepository <Workflow, Long> {
+    Workflow findWorkflowById(Long workflowId);
 }
