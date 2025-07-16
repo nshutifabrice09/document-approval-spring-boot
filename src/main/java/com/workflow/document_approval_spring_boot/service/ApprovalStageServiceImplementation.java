@@ -1,2 +1,7 @@
-package com.workflow.document_approval_spring_boot.service;public class ApprovalStageServiceImplementation {
+package com.workflow.document_approval_spring_boot.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ApprovalStageServiceImplementation implements ApprovalStageService{
 }
