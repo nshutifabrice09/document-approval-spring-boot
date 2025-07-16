@@ -7,9 +7,9 @@ import java.time.LocalDate;
 
 @Entity
 @Data
+@Table(name = "approval_actions")
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class ApprovalAction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

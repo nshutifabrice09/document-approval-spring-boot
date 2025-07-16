@@ -15,14 +15,23 @@ public class ChangeRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long documentId;
-    private Long requestedBy;
     private String description;
     private LocalDate requestedAt;
     private String status;
-    private Long responseBy;
     private String responseNote;
     private LocalDate resolvedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "document_id")
+    private Document document;
+
+    @ManyToOne
+    @JoinColumn(name = "requested_by")
+    private User requestedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "response_by")
+    private User responseBy;
 
     public Long getId() {
         return id;
@@ -30,22 +39,6 @@ public class ChangeRequest {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getDocumentId() {
-        return documentId;
-    }
-
-    public void setDocumentId(Long documentId) {
-        this.documentId = documentId;
-    }
-
-    public Long getRequestedBy() {
-        return requestedBy;
-    }
-
-    public void setRequestedBy(Long requestedBy) {
-        this.requestedBy = requestedBy;
     }
 
     public String getDescription() {
@@ -72,14 +65,6 @@ public class ChangeRequest {
         this.status = status;
     }
 
-    public Long getResponseBy() {
-        return responseBy;
-    }
-
-    public void setResponseBy(Long responseBy) {
-        this.responseBy = responseBy;
-    }
-
     public String getResponseNote() {
         return responseNote;
     }
@@ -94,5 +79,29 @@ public class ChangeRequest {
 
     public void setResolvedAt(LocalDate resolvedAt) {
         this.resolvedAt = resolvedAt;
+    }
+
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    public User getRequestedBy() {
+        return requestedBy;
+    }
+
+    public void setRequestedBy(User requestedBy) {
+        this.requestedBy = requestedBy;
+    }
+
+    public User getResponseBy() {
+        return responseBy;
+    }
+
+    public void setResponseBy(User responseBy) {
+        this.responseBy = responseBy;
     }
 }
