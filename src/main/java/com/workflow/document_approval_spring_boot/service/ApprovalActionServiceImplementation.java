@@ -1,6 +1,9 @@
 package com.workflow.document_approval_spring_boot.service;
 
 import com.workflow.document_approval_spring_boot.model.ApprovalAction;
+import com.workflow.document_approval_spring_boot.model.ApprovalStage;
+import com.workflow.document_approval_spring_boot.model.Document;
+import com.workflow.document_approval_spring_boot.model.User;
 import com.workflow.document_approval_spring_boot.repository.ApprovalActionRepository;
 import com.workflow.document_approval_spring_boot.repository.ApprovalStageRepository;
 import com.workflow.document_approval_spring_boot.repository.DocumentRepository;
@@ -36,16 +39,30 @@ public class ApprovalActionServiceImplementation implements ApprovalActionServic
 
     @Override
     public ApprovalAction saveApprovalAction(ApprovalAction approvalAction, Long documentId, Long stageId, Long actionByUserId) {
-        return null;
+        Document document = documentRepository.findDocumentById(documentId);
+        ApprovalStage approvalStage = approvalStageRepository.findApprovalStageById(stageId);
+        User user = userRepository.findUserById(actionByUserId);
+        approvalAction.setDocument(document);
+        approvalAction.setStage(approvalStage);
+        approvalAction.setActionBy(user);
+        return approvalActionRepository.save(approvalAction);
     }
 
     @Override
     public ApprovalAction updateApprovalAction(Long id, ApprovalAction approvalAction) {
+        ApprovalAction existApprovalAction = approvalActionRepository.findApprovalActionById(id);
+        if(existApprovalAction != null){
+            existApprovalAction.setActionType(approvalAction.getActionType());
+            existApprovalAction.setComments(approvalAction.getComments());
+            existApprovalAction.setAttachments(approvalAction.getAttachments());
+            existApprovalAction.setActionTimestamp(approvalAction.getActionTimestamp());
+            return approvalActionRepository.save(existApprovalAction);
+        }
         return null;
     }
 
     @Override
     public void removeApprovalAction(Long id) {
-
+        approvalActionRepository.deleteById(id);
     }
 }
