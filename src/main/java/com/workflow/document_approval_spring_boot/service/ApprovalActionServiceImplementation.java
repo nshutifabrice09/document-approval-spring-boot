@@ -26,12 +26,12 @@ public class ApprovalActionServiceImplementation implements ApprovalActionServic
 
     @Override
     public List<ApprovalAction> approvalActionsList() {
-        return null;
+        return approvalActionRepository.findAll();
     }
 
     @Override
     public ApprovalAction getApprovalActionById(Long id) {
-        return null;
+        return approvalActionRepository.findApprovalActionById(id);
     }
 
     @Override
