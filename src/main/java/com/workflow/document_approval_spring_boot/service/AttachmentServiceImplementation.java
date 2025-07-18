@@ -1,6 +1,8 @@
 package com.workflow.document_approval_spring_boot.service;
 
 import com.workflow.document_approval_spring_boot.model.Attachment;
+import com.workflow.document_approval_spring_boot.model.Document;
+import com.workflow.document_approval_spring_boot.model.User;
 import com.workflow.document_approval_spring_boot.repository.AttachmentRepository;
 import com.workflow.document_approval_spring_boot.repository.DocumentRepository;
 import com.workflow.document_approval_spring_boot.repository.UserRepository;
@@ -35,11 +37,23 @@ public class AttachmentServiceImplementation implements AttachmentService{
 
     @Override
     public Attachment saveAttachment(Attachment attachment, Long documentId, Long uploadedBy) {
-        return null;
+        Document document = documentRepository.findDocumentById(documentId);
+        User user = userRepository.findUserById(uploadedBy);
+        attachment.setDocument(document);
+        attachment.setUploadedBy(user);
+        return attachmentRepository.save(attachment);
     }
 
     @Override
     public Attachment updateAttachment(Long id, Attachment attachment) {
+        Attachment existAttachment = attachmentRepository.findAttachmentById(id);
+        if(existAttachment != null){
+            existAttachment.setFileType(attachment.getFileType());
+            existAttachment.setFileType(attachment.getFileType());
+            existAttachment.setSize(attachment.getSize());
+            existAttachment.setUploadedAt(attachment.getUploadedAt());
+            return attachmentRepository.save(existAttachment);
+        }
         return null;
     }
 
