@@ -60,7 +60,6 @@ public class ApprovalActionServiceImplementation implements ApprovalActionServic
         }
         return null;
     }
-
     @Override
     public void removeApprovalAction(Long id) {
         approvalActionRepository.deleteById(id);

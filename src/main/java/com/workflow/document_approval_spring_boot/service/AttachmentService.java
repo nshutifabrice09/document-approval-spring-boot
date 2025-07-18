@@ -1,2 +1,4 @@
-package com.workflow.document_approval_spring_boot.service;public interface AttachmentService {
+package com.workflow.document_approval_spring_boot.service;
+
+public interface AttachmentService {
 }

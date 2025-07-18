@@ -20,6 +20,7 @@ public class ApprovalStageTemplate {
     private String roleRequired;   // e.g., "MANAGER"
 
     @ManyToOne
+    @JoinColumn(name = "workflow_id")
     private Workflow workflow;
 
     public Long getId() {
