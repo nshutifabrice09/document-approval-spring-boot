@@ -23,15 +23,14 @@ public class AttachmentServiceImplementation implements AttachmentService{
         this.userRepository = userRepository;
     }
 
-
     @Override
     public List<Attachment> attachmentList() {
-        return null;
+        return attachmentRepository.findAll();
     }
 
     @Override
     public Attachment getAttachmentById(Long id) {
-        return null;
+        return attachmentRepository.findAttachmentById(id);
     }
 
     @Override
@@ -46,6 +45,6 @@ public class AttachmentServiceImplementation implements AttachmentService{
 
     @Override
     public void removeAttachment(Long id) {
-
+        attachmentRepository.deleteById(id);
     }
 }
