@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ApprovalStageTemplateRepository extends JpaRepository <ApprovalStageTemplate, Long> {
+    ApprovalStageTemplate findApprovalStageTemplateById(Long id);
 }
