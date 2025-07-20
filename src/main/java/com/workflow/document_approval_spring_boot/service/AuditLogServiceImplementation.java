@@ -18,15 +18,15 @@ public class AuditLogServiceImplementation implements AuditLogService{
         this.auditLogRepository = auditLogRepository;
         this.userRepository = userRepository;
     }
-    
+
     @Override
     public List<AuditLog> auditLogList() {
-        return null;
+        return auditLogRepository.findAll();
     }
 
     @Override
     public AuditLog getAuditLogById(Long id) {
-        return null;
+        return auditLogRepository.findAuditLogById(id);
     }
 
     @Override
